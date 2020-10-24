@@ -20,3 +20,31 @@
     ![wait](.Images/wait.jpg?raw=true "wait")  
     - Create window object  
     ![generate-window](.Images/generate-window.jpg?raw=true "generate-window")  
+ ## Code  
+  - Override and use
+   ```cs
+   public class <SCRIPT_NAME>: Window
+   {
+
+     protected override void OnEnable()
+     {
+         base.OnEnable();
+     }
+
+     protected override void OnDisable()
+     {
+         base.OnDisable();        
+     }
+
+     public override void Open<T>(T value)
+     {
+         base.Open();       
+     }
+
+     public override void Open()
+     {
+        base.Open();       
+     }
+
+   }
+  ```
