@@ -15,20 +15,22 @@ public class <SCRIPT_NAME>: Window
     {
         base.OnEnable();
     }
-
+    
     protected override void OnDisable()
     {
-        base.OnDisable();        
-    }
-
-    public override void Open<T>(T value)
-    { 
-        base.Open();       
+        base.OnDisable();
     }
     
-    public override void Open()
+    public override Window Open<T>(T value)
     { 
-       base.Open();       
+        base.Open();
+        return this;
+    }
+        
+    public override Window Open()
+    { 
+       base.Open();
+       return this;
     }
      
 }

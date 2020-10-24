@@ -26,11 +26,11 @@ public class Usage : MonoBehaviour
 
    private void Open()
    {
-      UIWindows.Open(WindowType.Testing);
+      UIWindows.Open(WindowType.Testing).OnComplete(()=>Debug.Log("Opened"));
    }
 
    private void Close()
    {
-      UIWindows.Close(WindowType.Testing);
+      UIWindows.Close(WindowType.Testing).OnComplete(()=>Debug.Log("Closed"));
    }
 }

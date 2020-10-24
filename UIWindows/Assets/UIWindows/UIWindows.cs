@@ -38,20 +38,27 @@ namespace UIWindowsManager
         /// <param name="type">window type</param>
         /// <param name="value">given value</param>
         /// <typeparam name="T">any type if you overwrite it in window</typeparam>
-        public static void Open<T>(WindowType type, T value)
+        public static Window Open<T>(WindowType type, T value)
         {
-            Instance.windows.GetWindow(type).Open(value);
+            var window = Instance.windows.GetWindow(type);
+            window.Open(value);
+            return window;
         }
 
-        public static void Open(WindowType type)
+        public static Window Open(WindowType type)
         {
-            Instance.windows.GetWindow(type).Open();
+            var window = Instance.windows.GetWindow(type);
+            window.Open();
+            return window;
         }
 
 
-        public static void Close(WindowType type)
+        public static Window Close(WindowType type)
         {
-            Instance.windows.GetWindow(type).Close();
+            var window = Instance.windows.GetWindow(type);
+            window.Close();
+            return window;
+            
         }
         private void Singleton()
         { 

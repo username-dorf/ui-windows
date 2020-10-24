@@ -82,6 +82,21 @@ namespace UIWindowsExtention
         }
         #endregion
 
+
+        #region LateAction
+
+        public static void DoAfterEndOfFrame(this GameObject obj,Action action)
+        {
+            ExtensionMethodHelper.Instance.StartCoroutine(DoAfterEndOfFrameRoutine(action));
+        }
+
+        private static IEnumerator DoAfterEndOfFrameRoutine(Action action)
+        {
+            yield return new WaitForEndOfFrame();
+            action?.Invoke();
+        }
+
+        #endregion
         #region GetComponentsWithTag
 
         public static T FindComponentInChildWithTag<T>(this GameObject parent, string tag)where T:Component{

@@ -24,6 +24,7 @@ namespace UIWindowsManager
 
         
         
+        
         public static void Appear(this Window window,Action onComplete)
         {
             window.gameObject.SetActive(true);
@@ -31,10 +32,16 @@ namespace UIWindowsManager
             window.Body.Appear(onComplete);
         }
 
-        public static void Hide(this Window window, Action onStart)
+        public static void Hide(this Window window, Action onStart, Action onComplete)
         {
             window.Background.Hide();
-            window.Body.Hide(onStart,()=>window.gameObject.SetActive(false));
+            window.Body.Hide(onStart,()=>
+            {
+                onComplete?.Invoke();
+                // may be laggy need to test
+                window.gameObject.DoAfterEndOfFrame(()=>window.gameObject.SetActive(false));
+                //window.gameObject.SetActive(false); //old version (onComplete not work for Close)
+            });
         }
 
         /// <summary>
@@ -65,8 +72,8 @@ namespace UIWindowsManager
            
             body.wRect.transform.localScale=WindowSmallSize;
             body.window.gameObject.SetActive(true);
-            body.wRect.DoScale(WindowNormalSize, WindowAppearTime);
-            onComplete?.Invoke();
+            body.wRect.DoScale(WindowNormalSize, WindowAppearTime,()=>onComplete?.Invoke());
+            //onComplete?.Invoke();
         }
 
         /// <summary>
@@ -80,9 +87,10 @@ namespace UIWindowsManager
             onStart?.Invoke();
             body.CGroup.DoFade(AlphaMin, WindowHIdeTime,()=>
             {
+                onComplete?.Invoke();
                 body.window.SetActive(false);
                 body.CGroup.DoFade(AlphaOne, TimeInstant);
-                onComplete?.Invoke();
+                
             });
         }
 

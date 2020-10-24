@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UIWindowsExtention;
 using UnityEngine;
 using UnityEngine.Events;
@@ -96,19 +97,73 @@ namespace UIWindowsManager
             _components.CloseButton = _components.BodyWindow.FindComponentInChildWithTag<Button>(WindowCloseButtonTag);
         }
 
-        public virtual void Open()
+        [SerializeField] private bool isAnimated;
+
+        private bool IsAnimated
         {
-            this.Appear(()=>OnOpened?.Invoke(type));
+            get
+            {
+                return isAnimated;
+            }
+            set
+            {
+                if (onCompleteRoutine != null && value)
+                {
+                    StopCoroutine(onCompleteRoutine);
+                }
+
+                isAnimated = value;
+            }
         }
 
-        public virtual void Open<T>(T value)
+        private Coroutine onCompleteRoutine;
+        
+        public virtual Window Open()
         {
-            this.Appear(()=>OnOpened?.Invoke(type));
+            IsAnimated = true;
+            this.Appear(()=>
+            {
+                OnOpened?.Invoke(type);
+                IsAnimated = false;
+            });
+            return this;
+        }
+
+        public virtual Window Open<T>(T value)
+        {
+            IsAnimated = true;
+            this.Appear(()=>
+            {
+                OnOpened?.Invoke(type);
+                IsAnimated = false;
+            });
+            return this;
         }
         
         public virtual void Close()
         {
-            this.Hide(()=>OnClosed?.Invoke(type));
+            IsAnimated = true;
+            this.Hide(()=>
+            {
+                OnClosed?.Invoke(type);
+            }, () =>
+            {
+                IsAnimated = false;
+            });
+        }
+
+        public virtual Window OnComplete(UnityAction onComplete=null)
+        {
+            if(gameObject.activeSelf) onCompleteRoutine=StartCoroutine(WaitRoutine(onComplete));
+            return this;
+        }
+
+        private IEnumerator WaitRoutine(UnityAction onComplete)
+        {
+            yield return new WaitUntil(()=>!IsAnimated);
+            onComplete?.Invoke();
+            onCompleteRoutine = null;
+            
         }
     }
 

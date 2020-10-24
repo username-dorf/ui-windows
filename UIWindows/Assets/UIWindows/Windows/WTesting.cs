@@ -18,17 +18,18 @@ public class WTesting: Window
 
     protected override void OnDisable()
     {
-        base.OnDisable();        
+        base.OnDisable();
     }
 
-    public override void Open<T>(T value)
+    public override Window Open<T>(T value)
     { 
-        base.Open();       
+        base.Open();
+        return this;
     }
     
-    public override void Open()
+    public override Window Open()
     { 
-       base.Open();       
+       base.Open();
+       return this;
     }
-     
 }
