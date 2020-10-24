@@ -4,7 +4,18 @@
  ## How to
  - Step 1
  Import package to your project
- -Step 2
+ - Step 2
  Add manager to your scene:
-  Open UIWindows
+  - Open UIWindows
   ![manger-window](.Images/components-uiwindows.jpg?raw=true "manager-window")
+  - Add manager object to scene
+  ![manger-on-scene](.Images/create-mager.jpg?raw=true "manager-on-scene")
+ - Step 3
+  - Name your future window
+  ![window-naming](.Images/enter-window-name.jpg?raw=true "window-naming")
+  - Create scripts
+  ![scripts-generation](.Images/generate-scripts.jpg?raw=true "scripts-generation")
+  - Wait till unity finish compile
+  ![wait](.Images/wait.jpg?raw=true "wait")
+  - Create window object
+  ![generate-window](.Images/generate-window.jpg?raw=true "generate-window")
