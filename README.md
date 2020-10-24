@@ -6,10 +6,9 @@
  Import package to your project
  - Step 2
  Add manager to your scene:
-    - Open UIWindows
-    ![manger-window](.Images/components-uiwindows.jpg?raw=true "manager-window");
-    <br>
-    - Add manager object to scene
+    - Open UIWindows  
+    ![manger-window](.Images/components-uiwindows.jpg?raw=true "manager-window")      
+    - Add manager object to scene  
     ![manger-on-scene](.Images/create-mager.jpg?raw=true "manager-on-scene")\
  - Step 3
  Creating windows
