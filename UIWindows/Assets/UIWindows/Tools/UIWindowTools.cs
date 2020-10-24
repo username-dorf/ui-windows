@@ -12,9 +12,14 @@ using Object = UnityEngine.Object;
 
 namespace UIWindow.Tools
 {
+    
+   
     public static class UIWindowTools
     {
-
+        private const string ResourcesPath="Assets/UIWindows/Resources";
+        private const string UIWindowsFolderPath="Assets/UIWindows";
+        private static readonly string WindowsPath = $"/UIWindows/Windows/";
+        
         private static readonly string FileNamePlaceholder = "<SCRIPT_NAME>"; 
       
         private static GameObject WindowPrefab
@@ -22,7 +27,7 @@ namespace UIWindow.Tools
             get
             {
                 #if UNITY_EDITOR
-                return (GameObject)AssetDatabase.LoadAssetAtPath("Assets/UIWindows/Resources/WWindow.prefab",
+                return (GameObject)AssetDatabase.LoadAssetAtPath($"{ResourcesPath}/WWindow.prefab",
                     typeof(GameObject));
                 #else
                 return null;
@@ -34,7 +39,7 @@ namespace UIWindow.Tools
             get
             {
                 #if UNITY_EDITOR
-                return (GameObject)AssetDatabase.LoadAssetAtPath("Assets/UIWindows/Resources/UIWindows.prefab",
+                return (GameObject)AssetDatabase.LoadAssetAtPath($"{ResourcesPath}/UIWindows.prefab",
                     typeof(GameObject));
                 #else
                 return null;
@@ -43,7 +48,7 @@ namespace UIWindow.Tools
         }
    
         
-        private static readonly string LocalPath = $"/UIWindows/Windows/";
+        
 
 
         public static void CreateWindowObject(string windowName)
@@ -64,7 +69,7 @@ namespace UIWindow.Tools
         public static void CreateWindowScript(string windowName)
         {
             CreateWindowType(windowName);
-            var filePath = $"{Application.dataPath}{LocalPath}";
+            var filePath = $"{Application.dataPath}{WindowsPath}";
             File.WriteAllText(filePath+GetFileName(windowName),GetFileTemplate(GetScriptName(windowName)));
             #if UNITY_EDITOR
             AssetDatabase.Refresh();
@@ -84,7 +89,7 @@ namespace UIWindow.Tools
         {
             string enumName = windowName;
             string[] enumEntries = GetExistingEnum(enumName);
-            string filePathAndName = "Assets/UIWindows/Types.cs"; //The folder Scripts/Enums/ is expected to exist
+            string filePathAndName = $"{UIWindowsFolderPath}/Types.cs"; //The folder Scripts/Enums/ is expected to exist
  
             using ( StreamWriter streamWriter = new StreamWriter( filePathAndName ) )
             {
