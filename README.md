@@ -25,26 +25,33 @@
    ```cs
    public class <SCRIPT_NAME>: Window
    {
-
      protected override void OnEnable()
      {
          base.OnEnable();
      }
-
      protected override void OnDisable()
      {
          base.OnDisable();        
      }
-
      public override void Open<T>(T value)
      {
          base.Open();       
      }
-
      public override void Open()
      {
         base.Open();       
      }
-
    }
+  ```
+  - Open/Close window with name "Testing"
+   ```cs
+    private void Open()
+    {
+       UIWindows.Open(WindowType.Testing);
+    }
+
+    private void Close()
+    {
+       UIWindows.Close(WindowType.Testing);
+    }
   ```
