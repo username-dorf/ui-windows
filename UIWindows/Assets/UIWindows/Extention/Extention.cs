@@ -113,67 +113,7 @@ namespace UIWindowsExtention
 
         #endregion
         
-        #region Window
-
-        public static Window GetWindow(this List<UIWindows.WindowEntity> list, WindowType type)
-        {
-            for (int i = 0; i < list.Count; i++)
-            {
-                if (list[i].type == type)
-                {
-                    if (list[i].entity.type != type)
-                    {
-                        Debug.LogError($"Finded window with type {type}. But actual window not match given type. " +
-                                       $"Window type is {list[i].entity.type}",list[i].entity.gameObject);
-                    }
-                    return list[i].entity;
-                }
-            }
-
-            Debug.LogError($"No window with type {type} in list");
-            return null;
-        }
-
-        public static bool IsAnyOpened(this List<UIWindows.WindowEntity> list)
-        {
-            for (int i = 0; i < list.Count; i++)
-            {
-                if (list[i].entity.gameObject.activeSelf)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-        public static bool IsAnyOpened(this List<UIWindows.WindowEntity> list,out Window opened)
-        {
-            for (int i = 0; i < list.Count; i++)
-            {
-                if (list[i].entity.gameObject.activeSelf)
-                {
-                    opened = list[i].entity;
-                    return true;
-                }
-            }
-            opened = null;
-            return false;
-        }
-    
-        public static bool IsOpened(this List<UIWindows.WindowEntity> list,WindowType type)
-        {
-            for (int i = 0; i < list.Count; i++)
-            {
-                if (list[i].entity.gameObject.activeSelf && list[i].type==type)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        #endregion
+        
     }
     public class ExtensionMethodHelper : MonoBehaviour
     {
