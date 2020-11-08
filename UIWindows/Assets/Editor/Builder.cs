@@ -59,10 +59,16 @@ namespace Editor
             providedArguments = new Dictionary<string, string>();
             string[] _args = Environment.GetCommandLineArgs();
 
+            string argstr="Dorf is here this is arguments ";
+            for (int i = 0; i < _args.Length; i++)
+            {
+                argstr += " " + _args[i];
+            }
+            Console.WriteLine(argstr);
             int index=int.MinValue;
             for (int i = 0; i < _args.Length; i++)
             {
-                if (_args[i] == "batchmode")
+                if (_args[i] == "-batchmode")
                 {
                     index = i;
                     break;
