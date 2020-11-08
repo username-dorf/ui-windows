@@ -43,6 +43,7 @@ jobs:
     - name: Build for Android
       uses: webbertakken/unity-builder@v2.0-alpha-1
       with:
+        customParameters: -batchmode
         unityVersion: 2019.4.8f1
         projectPath: UIWindows
         targetPlatform: Android
