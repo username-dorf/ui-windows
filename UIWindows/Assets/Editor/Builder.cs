@@ -34,8 +34,8 @@ namespace Editor
             // Support Android signing
             if (buildOptions.target == BuildTarget.Android)
             {
-                 PlayerSettings.Android.keystorePass = options["keystorePass"];
-                 PlayerSettings.Android.keyaliasPass = options["keyaliasPass"];
+                 PlayerSettings.Android.keystorePass = options["androidKeystorePass"];
+                 PlayerSettings.Android.keyaliasPass = options["androidKeyaliasPass"];
                 if (options.ContainsKey("androidAppBundle"))
                 {
                     EditorUserBuildSettings.buildAppBundle = true;
