@@ -76,7 +76,7 @@ namespace Editor
             }
 
             var list = _args.ToList();
-            if(index!=Int32.MinValue)list.RemoveAt(index);
+            if(index!=Int32.MinValue)list.RemoveAt(2);
             string[] args = list.ToArray();
             Console.WriteLine($"its me dorf and i removed {index}");
             argstr="Dorf  again is here this is arguments ";
