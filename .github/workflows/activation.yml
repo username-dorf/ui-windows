@@ -21,6 +21,8 @@ name: Build Workflow
 
 on: [push]
 
+env:
+  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 jobs:
 
   build:
@@ -40,8 +42,6 @@ jobs:
 
     - name: Build for Android
       uses: webbertakken/unity-builder@v2.0-alpha-1
-#      env:
-#        UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
       with:
         unityVersion: 2019.4.8f1
         projectPath: UIWindows
