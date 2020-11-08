@@ -57,8 +57,23 @@ namespace Editor
         private static void ParseCommandLineArguments(out Dictionary<string, string> providedArguments)
         {
             providedArguments = new Dictionary<string, string>();
-            string[] args = Environment.GetCommandLineArgs();
+            string[] _args = Environment.GetCommandLineArgs();
 
+            int index=int.MinValue;
+            for (int i = 0; i < _args.Length; i++)
+            {
+                if (_args[i] == "batchmode")
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            var list = _args.ToList();
+            if(index!=Int32.MinValue)list.RemoveAt(index);
+            string[] args = list.ToArray();
+            Console.WriteLine($"its me dorf and i removed {index}");
+            
             Console.WriteLine(
                 $"{Eol}" +
                 $"###########################{Eol}" +
