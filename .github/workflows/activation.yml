@@ -52,6 +52,7 @@ jobs:
         #versioning: Semantic
         #androidVersionCode: 0
         androidKeystoreName: uiwindow.keystore
+        androidKeystoreBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
         androidKeystorePass: ${{ secrets.ANDROID_KEYSTORE_PASS }}
         androidKeyaliasName: uiwindows
         androidKeyaliasPass: ${{ secrets.ANDROID_KEYALIAS_PASS }}
