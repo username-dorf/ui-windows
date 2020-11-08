@@ -41,18 +41,18 @@ jobs:
         key: Library
 
     - name: Build for Android
-      uses: webbertakken/unity-builder@v2.0-alpha-1
+      uses: webbertakken/unity-builder@aa43a36ab902e8264c44f803bd94b0c921825734
       with:
 #        customParameters: -batchmode
         #customParameters: '-niwradMode offline'
         unityVersion: 2019.4.8f1
         projectPath: UIWindows
         targetPlatform: Android
-        buildMethod: Editor.Builder.BuildProject
+        #buildMethod: Editor.Builder.BuildProject
         #versioning: Semantic
         #androidVersionCode: 0
         androidKeystoreName: uiwindow.keystore
-        androidKeystoreBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        #androidKeystoreBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
         androidKeystorePass: ${{ secrets.ANDROID_KEYSTORE_PASS }}
         androidKeyaliasName: uiwindows
         androidKeyaliasPass: ${{ secrets.ANDROID_KEYALIAS_PASS }}
