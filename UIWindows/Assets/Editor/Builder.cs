@@ -79,6 +79,12 @@ namespace Editor
             if(index!=Int32.MinValue)list.RemoveAt(index);
             string[] args = list.ToArray();
             Console.WriteLine($"its me dorf and i removed {index}");
+            argstr="Dorf  again is here this is arguments ";
+            for (int i = 0; i < args.Length; i++)
+            {
+                argstr += " " + args[i];
+            }
+            Console.WriteLine(argstr);
             
             Console.WriteLine(
                 $"{Eol}" +
